@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import { GlobalStyle } from './styles/global-styles';
@@ -22,12 +21,10 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
       <GlobalStyle />
       <Provider store={store}>
         <App />
       </Provider>
-    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -12,6 +12,7 @@ function* login(action){
       type: LOGIN_SUCCESS,
       data: result.data[0].username,
     });
+    localStorage.setItem("user", result.data[0].username);
   } catch (error) {
     console.log('error', error);
     yield put({

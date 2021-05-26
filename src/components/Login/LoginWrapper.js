@@ -6,7 +6,7 @@ import useInput from '../../hooks/useInput';
 import Button from '../common/Button';
 import InputWithLabel from '../common/InputWithLabel';
 import { Wrapper, LoginForm, Logo } from './styles';
-const LoginWrapper = ( { history }) => {
+const LoginWrapper = ({history}) => {
   const dispatch = useDispatch();
   const {loginDone, loginError} = useSelector((state) => state.user)
   const [email, onChangeEmail] = useInput('');
@@ -64,7 +64,7 @@ const LoginWrapper = ( { history }) => {
           onChange={onChangePassWord}
         />
       </LoginForm>
-      <Button onClick={loginOnClick}>로그인</Button>
+      <Button type="button" size="middle" onClick={loginOnClick}>로그인</Button>
     </Wrapper>
   );
 };

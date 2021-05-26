@@ -13,6 +13,25 @@ export const FORUMS_LIST_SUCESS = 'FORUMS_LIST_SUCCESS';
 export const FORUMS_LIST_FAIL = 'FORUMS_LIST_FAIL';
 export const FORUMS_LIST_REQUEST = 'FORUMS_LIST_REQUEST';
 
-export const forumsListRequest = () => ({
+export const FORUMS_SEARCH_SUCESS = 'FORUMS_SEARCH_SUCCESS';
+export const FORUMS_SEARCH_FAIL = 'FORUMS_SEARCH_FAIL';
+export const FORUMS_SEARCH_REQUEST = 'FORUMS_SEARCH_REQUEST';
+
+export const FORUMS_DETAIL_SUCESS = 'FORUMS_DETAIL_SUCCESS';
+export const FORUMS_DETAIL_FAIL = 'FORUMS_DETAIL_FAIL';
+export const FORUMS_DETAIL_REQUEST = 'FORUMS_DETAIL_REQUEST';
+
+export const forumsListRequest = (data) => ({
   type: FORUMS_LIST_REQUEST,
+  data
+});
+
+export const forumsSearchRequest = (data) => ({
+  type: FORUMS_SEARCH_REQUEST,
+  data
+});
+
+export const forumsDetaulRequest = (data) => ({
+  type: FORUMS_DETAIL_REQUEST,
+  data
 });
