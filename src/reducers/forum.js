@@ -8,6 +8,9 @@ import {
   FORUMS_DETAIL_FAIL,
   FORUMS_DETAIL_REQUEST,
   FORUMS_DETAIL_SUCESS,
+  FORUMS_WRITE_FAIL,
+  FORUMS_WRITE_REQUEST,
+  FORUMS_WRITE_SUCESS,
 } from '../actions';
 
 export const initalState = {
@@ -20,6 +23,9 @@ export const initalState = {
   detailLoading: false,
   detailDone: false,
   detailError: null,
+  writeLoading: false,
+  writeDone: false,
+  writeError: null,
   forums: [],
   detail: {},
 };
@@ -83,6 +89,26 @@ const reducer = (state = initalState, action) => {
         detailDone: false,
         detailError: action.error,
       };
+      case FORUMS_WRITE_REQUEST:
+        return {
+          ...state,
+          writeLoading: true,
+          writeDone: false,
+        };
+      case FORUMS_WRITE_SUCESS:
+        return {
+          ...state,
+          forums:[action.data, ...state.forums],
+          writeLoading: false,
+          writeDone: true,
+        };
+      case FORUMS_WRITE_FAIL:
+        return {
+          ...state,
+          writeLoading: false,
+          writeDone: false,
+          writeError: action.error,
+        };
     default:
       return state;
   }

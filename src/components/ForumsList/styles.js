@@ -20,7 +20,7 @@ export const ForumsGroup = styled.ul`
 `;
 
 export const ForumItem = styled.div`
-  width: 300px;
+  width: 280px;
   height: 372px;
   padding: 20px;
   border-radius: 4px;
@@ -81,4 +81,12 @@ export const Date = styled.span`
 `;
 export const MoreArea = styled.div`
   text-align:center;
+`;
+export const Top = styled.div`
+  position: relative;
+  button{
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
 `;

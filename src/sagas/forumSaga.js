@@ -9,6 +9,9 @@ import {
   FORUMS_DETAIL_FAIL,
   FORUMS_DETAIL_REQUEST,
   FORUMS_DETAIL_SUCESS,
+  FORUMS_WRITE_FAIL,
+  FORUMS_WRITE_REQUEST,
+  FORUMS_WRITE_SUCESS,
 } from '../actions';
 import * as api from '../api/forum';
 
@@ -58,7 +61,21 @@ function* Deatilfourm(action) {
     });
   }
 }
-
+function* Writefourm(action) {
+  console.log(action.data)
+  try {
+    yield call(api.postForumWrite, action.data);
+    yield put({
+      type: FORUMS_WRITE_SUCESS,
+      data: action.data,
+    });
+  } catch (error) {
+    yield put({
+      type: FORUMS_WRITE_FAIL,
+      data: error,
+    });
+  }
+}
 
 function* watchFourm() {
   yield takeLatest(FORUMS_LIST_REQUEST, fourms);
@@ -70,6 +87,15 @@ function* watchDetailFourm() {
   yield takeLatest(FORUMS_DETAIL_REQUEST, Deatilfourm);
 }
 
+function* watchWriteFourm() {
+  yield takeLatest(FORUMS_WRITE_REQUEST, Writefourm);
+}
+
 export default function* forumSaga() {
-  yield all([fork(watchFourm), fork(watchSearchFourm), fork(watchDetailFourm)]);
+  yield all([
+    fork(watchFourm),
+    fork(watchSearchFourm),
+    fork(watchDetailFourm),
+    fork(watchWriteFourm),
+  ]);
 }

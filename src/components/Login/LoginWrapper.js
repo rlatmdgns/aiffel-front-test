@@ -25,19 +25,18 @@ const LoginWrapper = ({history}) => {
     
   },[loginDone,loginError])
   const loginOnClick = useCallback(() => {
-    // const emailRegex =
-    //   /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{10,}$/;
-    // const loginError = '아이디와 비밀번호를 다시 입력해주세요.';
+    const emailRegex = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+    const passwordRegex = /^[a-zA-Z0-9]{10,20}$/
+    const loginError = '아이디와 비밀번호를 다시 입력해주세요.';
 
-    // if (!emailRegex.test(email)) {
-    //   alert(loginError);
-    //   return;
-    // }
-    // if (!passwordRegex.test(password)) {
-    //   alert(loginError);
-    //   return;
-    // }
+    if (!emailRegex.test(email)) {
+      alert(loginError);
+      return;
+    }
+    if (!passwordRegex.test(password)) {
+      alert(loginError);
+      return;
+    }
     const data = {email, password}
     dispatch(loginRequest(data));
   }, [email, password]);

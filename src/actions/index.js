@@ -21,6 +21,10 @@ export const FORUMS_DETAIL_SUCESS = 'FORUMS_DETAIL_SUCCESS';
 export const FORUMS_DETAIL_FAIL = 'FORUMS_DETAIL_FAIL';
 export const FORUMS_DETAIL_REQUEST = 'FORUMS_DETAIL_REQUEST';
 
+export const FORUMS_WRITE_SUCESS = 'FORUMS_WRITE_SUCCESS';
+export const FORUMS_WRITE_FAIL = 'FORUMS_WRITE_FAIL';
+export const FORUMS_WRITE_REQUEST = 'FORUMS_WRITE_REQUEST';
+
 export const forumsListRequest = (data) => ({
   type: FORUMS_LIST_REQUEST,
   data
@@ -33,5 +37,10 @@ export const forumsSearchRequest = (data) => ({
 
 export const forumsDetaulRequest = (data) => ({
   type: FORUMS_DETAIL_REQUEST,
+  data
+});
+
+export const forumsWriteRequest = (data) => ({
+  type: FORUMS_WRITE_REQUEST,
   data
 });

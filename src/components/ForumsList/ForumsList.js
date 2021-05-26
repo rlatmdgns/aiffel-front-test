@@ -16,6 +16,7 @@ import {
   SubInfo,
   Date,
   MoreArea,
+  Top
 } from './styles';
 import Modal from '../Modal/Modal';
 import ForumWrite from '../ForumWrite/ForumWrite';
@@ -23,7 +24,7 @@ const ForumsList = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const [isShow, setIsShow] = useState(false);
-  const { forums } = useSelector((state) => state.forum);
+  const { forums,writeDone } = useSelector((state) => state.forum);
   const onClickMore = () => {
     let nextPage = page + 1;
     dispatch(forumsListRequest(nextPage));
@@ -42,18 +43,25 @@ const ForumsList = () => {
     if(forums.length === 0 ){
       dispatch(forumsListRequest(page));
     }
-  }, [page]);
+  }, []);
+
+  useEffect(() => {
+    if(writeDone){
+      setIsShow(false)
+    }
+  }, [writeDone]);
+  
   const isForumsData = forums.length > 0;
   return (
     <Section>
-      <div>
+      <Top>
         <Button type="button"  size="large" onClick={onClickWrite}>
           글 작성
         </Button>
         <Modal isShow={isShow} setIsShow={setIsShow} dimd>
           <ForumWrite/>
         </Modal>
-      </div>
+      </Top>
       {isForumsData ? (
         <>
           <ForumsGroup>
@@ -84,7 +92,7 @@ const ForumsList = () => {
             })}
           </ForumsGroup>
           <MoreArea>
-            <Button type="button" onClick={onClickMore}>
+            <Button size="large" type="button" onClick={onClickMore}>
               더보기
             </Button>
           </MoreArea>

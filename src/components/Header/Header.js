@@ -14,7 +14,7 @@ const Header = ({ location }) => {
   const { forums, searchForums } = useSelector((state) => state.forum);
   const onClickSearch = useCallback(() => {
     const result = forums.filter((item) => {
-      if (item.hasOwnProperty('title'))
+      if (item.hasOwnProperty('title')) //title 속성 여부 체크 
         return item.title.indexOf(searchKeyword) !== -1;
     });
     dispatch(forumsSearchRequest(result));

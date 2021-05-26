@@ -7,3 +7,7 @@ export const getForums = (data) => {
 export const getForumDetail = (data) => {
   return axios.get(`/forum/${data}`)
 };
+
+export const postForumWrite = () => {
+  return axios.post(`/forum`)
+};
