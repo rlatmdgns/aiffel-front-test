@@ -11,8 +11,7 @@ const ForumWrite = () => {
   const dispatch = useDispatch();
   const [title, onChangeTitle] = useInput('');
   const [contentText, onChangeContent] = useInput('');
-  console.log(title);
-  console.log(contentText);
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (title === '') return;

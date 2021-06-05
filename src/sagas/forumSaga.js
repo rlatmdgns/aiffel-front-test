@@ -18,7 +18,6 @@ import * as api from '../api/forum';
 function* fourms(action) {
   try {
     const result = yield call(api.getForums, action.data);
-    console.log(result);
     yield put({
       type: FORUMS_LIST_SUCESS,
       data: result.data,
@@ -33,7 +32,6 @@ function* fourms(action) {
 
 function* Searchfourm(action) {
   try {
-    console.log(action);
     yield delay(100);
     yield put({
       type: FORUMS_SEARCH_SUCESS,
@@ -62,7 +60,6 @@ function* Deatilfourm(action) {
   }
 }
 function* Writefourm(action) {
-  console.log(action.data)
   try {
     yield call(api.postForumWrite, action.data);
     yield put({

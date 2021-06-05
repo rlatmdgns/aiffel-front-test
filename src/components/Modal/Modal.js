@@ -7,7 +7,6 @@ import { ModalWrapper, CloseButton } from './styles';
 const Modal = ({ children, isShow, setIsShow, dimd }) => {
   const modalEl = useRef(); //
   const CloseModal = (e) => {
-    console.log(modalEl.current);
     if (modalEl.current === e.target) {
       setIsShow(false);
     }

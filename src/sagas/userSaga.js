@@ -14,7 +14,6 @@ function* login(action){
     });
     localStorage.setItem("user", result.data[0].username);
   } catch (error) {
-    console.log('error', error);
     yield put({
       type: LOGIN_FAIL,
       data: error,
